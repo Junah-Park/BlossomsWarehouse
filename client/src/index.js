@@ -1,7 +1,9 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import store from './store';
 
 // function DressList() {
 //   return (
@@ -49,8 +51,11 @@ import App from './App';
 // }
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <React.StrictMode>
+    
+      <App />,
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
-
-
