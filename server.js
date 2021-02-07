@@ -5,14 +5,23 @@ const app = express();
 const port = process.env.PORT || 8080;
 // const path = require('path');
 
+// Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
+
 // Our DB Configuration
 // require('./src/database');
+// app.use(express.static(path.join(__dirname, './client/build')));
 
-app.use(express.static(path.join(__dirname, './client/build')));
-
-app.get('/api/products', (req, res) => {
-  res.send(data.products);
-});
+// app.get('/api/products', (req, res) => {
+//   res.send(data.products);
+// });
 
 // app.get('/',(req, res) => {
 //     res.send("Hello World!");
