@@ -8,13 +8,15 @@ const port = process.env.PORT || 8080;
 // Our DB Configuration
 // require('./src/database');
 
+app.use(express.static(path.join(__dirname, './client/build')));
+
 app.get('/api/products', (req, res) => {
   res.send(data.products);
 });
 
-app.get('/',(req, res) => {
-    res.send("Hello World!");
-});
+// app.get('/',(req, res) => {
+//     res.send("Hello World!");
+// });
 
 app.listen(port, function () {
     console.log(`Server listening on ${port}`);
